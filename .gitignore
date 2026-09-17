@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+output/
+dist/
+benchmark_results/
+legacy/
+run_*.py
+reference_fdm_3d_benchmark.py
+SGIP_no_advection_Colab.ipynb

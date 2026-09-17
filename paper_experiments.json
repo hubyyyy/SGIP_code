@@ -1,0 +1,32 @@
+{
+  "paper": {
+    "title": "A Stochastic Genetic Interacting Particle Method for Reaction-Diffusion-Advection Equations",
+    "authors": ["Boyi Hu", "Zhongjian Wang", "Jack Xin", "Zhiwen Zhang"],
+    "domain": "[-60, 60]^d",
+    "final_time": 20.0,
+    "random_seed": 2025,
+    "external_input_data": false
+  },
+  "shared_sgip_parameters": {
+    "1D": {"particles": 1000000, "bins_per_axis": 150, "dt": 0.5},
+    "2D": {"particles": 3000000, "bins_per_axis": 100, "dt": 0.5},
+    "3D": {"particles": 5000000, "bins_per_axis": 100, "dt": 0.5}
+  },
+  "figures": [
+    {"figure": 1, "dimension": 1, "reaction": "u(1-u)", "initial_condition": "chi_[0,1]", "fdm_dx": 0.001, "fdm_dt": 0.001, "driver": "reproduce_1d.py"},
+    {"figure": 2, "dimension": 1, "reaction": "u^2(1-u)", "initial_condition": "chi_[0,1]", "fdm_dx": 0.001, "fdm_dt": 0.001, "driver": "reproduce_1d.py"},
+    {"figure": 3, "dimension": 1, "reaction": "exp(-1/(2u))(1-u)", "initial_condition": "chi_[0,1]", "fdm_dx": 0.001, "fdm_dt": 0.001, "driver": "reproduce_1d.py"},
+    {"figure": 4, "dimension": 1, "quantity": "rightmost u=0.5 front position", "cases": ["Figures 1", "Figure 2", "Figure 3"], "driver": "reproduce_1d.py"},
+    {"figure": 5, "dimension": 1, "reaction": "u(1-u)(u-0.25)", "initial_condition": "chi_[0,1]", "fdm_dx": 0.001, "fdm_dt": 0.001, "driver": "reproduce_1d.py"},
+    {"figure": 6, "dimension": 1, "reaction": "u(1-u)(u-0.25)", "initial_condition": "chi_[-10,10]", "fdm_dx": 0.001, "fdm_dt": 0.001, "driver": "reproduce_1d.py"},
+    {"figure": 7, "dimension": 2, "flow": "none", "reaction": "u(1-u)", "diffusion": 1.0, "initial_condition": "chi_[0,1]^2", "fdm_cells_per_axis": 12000, "fdm_dx": 0.01, "fdm_dt": 0.001, "driver": "reproduce_2d.py --figures 7"},
+    {"figure": 8, "dimension": 2, "flow": "shear", "reaction": "u(1-u)", "diffusion": 1.0, "initial_condition": "chi_[0,1]^2", "fdm_cells_per_axis": 12000, "fdm_dx": 0.01, "fdm_dt": 0.001, "driver": "reproduce_2d.py --figures 8"},
+    {"figure": 9, "dimension": 2, "flow": "cellular", "reaction": "u(1-u)", "diffusion": 1.0, "initial_condition": "chi_[0,1]^2", "fdm_cells_per_axis": 12000, "fdm_dx": 0.01, "fdm_dt": 0.001, "driver": "reproduce_2d.py --figures 9"},
+    {"figure": 10, "dimension": 2, "flow": "cat_eye", "reaction": "u(1-u)", "diffusion": [0.5, 1.0], "initial_condition": "chi_[0,1]^2", "fdm_cells_per_axis": 12000, "fdm_dx": 0.01, "fdm_dt": 0.001, "driver": "reproduce_2d.py --figures 10"},
+    {"figure": 11, "dimension": 3, "flow": "ABC", "reaction": "u(1-u)", "diffusion": 1.0, "initial_condition": "chi_B(0,1)", "fdm_cells_per_axis": 200, "fdm_dt": 0.005, "driver": "reproduce_3d.py --figures 11"},
+    {"figure": 12, "dimension": 3, "flow": "ABC", "reaction": "u(1-u)", "diffusion": 0.5, "initial_condition": "chi_B(0,1)", "fdm_cells_per_axis": 300, "fdm_dt": 0.0001, "driver": "reproduce_3d.py --figures 12"},
+    {"figure": 13, "dimension": 3, "flow": "ABC", "reaction": "u(1-u)", "diffusion": 0.1, "initial_condition": "chi_B(0,1)", "fdm": "not run because the required 400^3 calculation was reported as computationally prohibitive", "driver": "reproduce_3d.py --figures 13"},
+    {"figure": 14, "dimension": 3, "flow": "ABC", "reaction": "u^2(1-u)", "diffusion": 1.0, "initial_condition": "chi_B(0,5)", "fdm_cells_per_axis": 200, "fdm_dt": 0.001, "driver": "reproduce_3d.py --figures 14"},
+    {"figure": 15, "dimension": 3, "flow": "ABC", "reaction": "exp(-1/(2u))(1-u)", "diffusion": 1.0, "initial_condition": "chi_B(0,5)", "fdm_cells_per_axis": 200, "fdm_dt": 0.001, "driver": "reproduce_3d.py --figures 15"}
+  ]
+}
